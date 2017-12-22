@@ -1,0 +1,21 @@
+@keyframes scrollText {
+    0%{
+        transform: translateY(0);
+    }
+    100%{
+        transform: translateY(-50%);
+    }
+}
+.Winners{
+    height:6rem;
+    border:1px solid black;
+    overflow: hidden;
+    .wrap{
+        &.scrollText{
+            animation:scrollText 2s infinite linear;
+        }
+    }
+    li{
+        height:.5rem;
+    }
+}
