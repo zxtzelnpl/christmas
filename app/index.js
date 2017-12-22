@@ -5,6 +5,7 @@ import {Provider} from 'react-redux'
 import configureStore from './store/configureStore'
 import myStorage from './static/myStorage'
 import {initialState} from './reducers/user'
+import './static/weixin'
 
 
 import App from './App'

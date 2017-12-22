@@ -66,7 +66,7 @@ module.exports = {
 
   devServer: {
     proxy: {
-      '/ashx': {
+      '/DoubleDanashx': {
         target: 'http://106.14.21.199:8013',
         secure: false
       }

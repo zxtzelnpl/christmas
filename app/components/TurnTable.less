@@ -1,10 +1,50 @@
 .TurnTable{
     overflow: hidden;
+    .bigTable{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+
+        width:7.5rem;
+        height:6.9rem;
+        background:url(http://public.jyzqsh.com/christmas/luckDraw/TurnTable.png) no-repeat;
+        background-size:100% 100%;
+    }
+    .pointerWrap{
+        position:relative;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        width:1.9rem;
+        height:1.9rem;
+        border-radius:50%;
+        background:#f26741;
+        .go{
+            position:absolute;
+            top:.15rem;
+            left:.15rem;
+            width:1.6rem;
+            height:1.6rem;
+        }
+    }
     .pointer{
-        margin:0 auto;
-        width:5rem;
-        height:5rem;
-        background:red;
+        width:1.6rem;
+        height:1.6rem;
+        border-radius:50%;
+        background:#ffdc44;
         transition: transform 5s ease-out;
+        .triangle{
+            margin:-1.2rem auto 0;
+            display:block;
+            width:0;
+            height:0;
+            border-bottom-width:1.2rem;
+            border-top-width:.4rem;
+            border-left-width:.4rem;
+            border-right-width:.4rem;
+            border-style:solid;
+            border-color:transparent;
+            border-bottom-color: #ffdc44;
+        }
     }
 }
