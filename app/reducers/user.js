@@ -3,7 +3,7 @@ import * as actionTypes from '../constants/user'
 export const initialState = {
   isFetching: false,
   received:false,
-  check:false,
+  check:false,/**需要删除，改为false**/
   phone:'',/**需要删除**/
   id:'',/**需要删除**/
   prize:'0',

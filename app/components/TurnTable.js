@@ -1,6 +1,7 @@
 import './TurnTable.less'
 import React from 'react'
 import Pop from './Pop'
+import Prize from './Prize'
 import {public_resource,send_prize} from "../constants/urls";
 import {userPrize} from '../static/tools'
 
@@ -11,11 +12,16 @@ export default class TurnTable extends React.Component {
     this.state = {
       animate: false,
       popShow: false, /**需要删除，改为false**/
+      prizeShow:false,/**需要删除，改为false**/
       rotate: {
         'transform': 'rotate(0deg)'
       }
     }
     this.img_go = `${public_resource}/go.png`
+    this.userGot={
+      deg:0,
+      prize:''
+    }
   }
 
   componentDidMount() {
@@ -64,8 +70,17 @@ export default class TurnTable extends React.Component {
     fetch(url)
         .then(res=>res.json())
         .then(json=>{
-          console.log(json)
-          alert(`恭喜您获得奖品${prize}`)
+          if(json.error==='1'){
+            this.setState({
+              prizeShow:true
+            })
+          }
+          else{
+            alert('网络连接发送错误，请稍后重试')
+          }
+        })
+        .catch(e=>{
+          alert('网络连接发送错误，请稍后重试')
         })
 
   }
@@ -81,6 +96,8 @@ export default class TurnTable extends React.Component {
         user={this.props.user}
         userActions={this.props.userActions}
     /> : <div/>
+
+    let PrizeDom = this.state.prizeShow ? <Prize prize={this.userGot.prize}/>:<div />
 
 
     return (
@@ -100,6 +117,7 @@ export default class TurnTable extends React.Component {
             </div>
           </div>
           {popDom}
+          {PrizeDom}
         </div>
     )
   }
