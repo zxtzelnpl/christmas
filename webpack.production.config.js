@@ -11,17 +11,17 @@ module.exports = {
       'react-dom',
       'redux',
       'react-redux',
-      'react-router-dom',
       'es6-promise',
       'whatwg-fetch',
       'moment'
     ]
   },
   output: {
-    path: __dirname + '/build',
+    path: __dirname + '/christmas',
+    // path: __dirname + '/build',
     // filename: "[name].[chunkhash:8].js",
     filename:'[name].js',
-    publicPath: '/build/'
+    publicPath: '/christmas/'
   },
   resolve: {
     extensions: ['.js']

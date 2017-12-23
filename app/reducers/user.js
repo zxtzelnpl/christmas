@@ -4,9 +4,9 @@ export const initialState = {
   isFetching: false,
   received:false,
   check:false,
-  phone:'15921433951',/**需要删除**/
-  id:'2',/**需要删除**/
-  pirze:'',
+  phone:'',/**需要删除**/
+  id:'',/**需要删除**/
+  prize:'0',
   err_msg:''
 }
 
@@ -26,6 +26,7 @@ export default function disk(state = initialState, action) {
         check: action.check,
         phone: action.phone,
         id:action.id,
+        prize:action.prize,
         err_msg:''
       }
     case actionTypes.USERCHECK_ERROR: //如果请求发生意外，则按此处理

@@ -23,13 +23,18 @@ export default class TurnTable extends React.Component {
   }
 
   onClick() {
-    let {check, received} = this.props.user
+    let {check, prize} = this.props.user
     let {animate} = this.state
 
-    if (check) {//如果从未接收到数据则弹出pop
+    console.log(prize)
+
+    if (!check) {//如果从未接收到数据则弹出pop
       return this.setState({
         popShow: true
       })
+    }
+    else if(prize==='1'||animate){
+      alert('此号码已经参与过抽奖了')
     }
     else if (!animate) {
       this.userGot = userPrize()
@@ -41,8 +46,8 @@ export default class TurnTable extends React.Component {
         }
       })
     }
-    else if(animate) {
-      alert('此号码已经参与过抽奖了')
+    else {
+      alert('页面故障，请稍后再试')
     }
   }
 

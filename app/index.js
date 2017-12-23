@@ -1,18 +1,16 @@
+import 'es6-promise'
+import 'whatwg-fetch'
 import React from 'react'
 import {render} from 'react-dom'
-import {HashRouter as Router} from 'react-router-dom'
 import {Provider} from 'react-redux'
 import configureStore from './store/configureStore'
-import myStorage from './static/myStorage'
 import {initialState} from './reducers/user'
-import './static/weixin'
 
 
 import App from './App'
-let store = configureStore({user:initialState})
+
+let store = configureStore({user: initialState})
 render(<Provider store={store}>
-    <Router>
-    <App/>
-    </Router>
-</Provider>
-, document.getElementById('root'))
+        <App/>
+    </Provider>
+    , document.getElementById('root'))
