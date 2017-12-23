@@ -1,70 +1,84 @@
 import './TurnTable.less'
 import React from 'react'
 import Pop from './Pop'
-import {public_resource} from "../constants/urls";
+import {public_resource,send_prize} from "../constants/urls";
+import {userPrize} from '../static/tools'
 
 // 用户不存在，请联系客服
-export default class TurnTable extends React.Component{
-  constructor(props){
+export default class TurnTable extends React.Component {
+  constructor(props) {
     super(props)
-    this.state={
-      animate:false,
-      popShow:false,
-      rotate:{
-        'transform':'rotate(0deg)'
+    this.state = {
+      animate: false,
+      popShow: false, /**需要删除，改为false**/
+      rotate: {
+        'transform': 'rotate(0deg)'
       }
     }
     this.img_go = `${public_resource}/go.png`
   }
 
-  componentDidMount(){
+  componentDidMount() {
 
   }
 
-  onClick(){
-    let {check,received} = this.props.user
+  onClick() {
+    let {check, received} = this.props.user
     let {animate} = this.state
 
-    // if(!received){//如果从未接收到数据则弹出pop
-    //   this.setState({
-    //     popShow:true
-    //   })
-    // }
-    // else{
-    //
-    // }
-
-    if(!animate){
-      this.setState(({rotate})=>{
-        let deg = parseInt(rotate.transform.slice(7,-4))
-        console.log(deg)
-        return {
-          animate:true,
-          rotate:{
-            'transform':`rotate(${deg+1890}deg)`
-          }
+    if (check) {//如果从未接收到数据则弹出pop
+      return this.setState({
+        popShow: true
+      })
+    }
+    else if (!animate) {
+      this.userGot = userPrize()
+      let {deg} = this.userGot
+      this.setState({
+        animate: true,
+        rotate: {
+          'transform': `rotate(${deg + 3600}deg)`
         }
       })
     }
+    else if(animate) {
+      alert('此号码已经参与过抽奖了')
+    }
   }
 
-  onTransitionEnd(){
+  closePop() {
     this.setState({
-      animate:false
+      popShow: false
     })
   }
 
-  sub(phone){
+  onTransitionEnd() {
+    let {id,phone} = this.props.user
+    let {prize} = this.userGot
+    let url = `${send_prize}?id=${id}&phone=${phone}&prize=${prize}`
+    fetch(url)
+        .then(res=>res.json())
+        .then(json=>{
+          console.log(json)
+          alert(`恭喜您获得奖品${prize}`)
+        })
+
+  }
+
+  sub(phone) {
     this.props.userActions.fetchPostsIfNeeded(phone)
   }
 
-  render(){
-    console.log(this.state)
+  render() {
+    let popDom = this.state.popShow && !this.props.check ? <Pop
+        sub={this.sub.bind(this)}
+        closePop={this.closePop.bind(this)}
+        user={this.props.user}
+        userActions={this.props.userActions}
+    /> : <div/>
 
-    let popDom =this.state.popShow?<Pop sub={this.sub.bind(this)}/>:<div />
 
-
-    return(
+    return (
         <div className="TurnTable">
           <div className="bigTable">
             <div className="pointerWrap"
@@ -75,12 +89,11 @@ export default class TurnTable extends React.Component{
                   style={this.state.rotate}
                   onTransitionEnd={this.onTransitionEnd.bind(this)}
               >
-                <span className="triangle" />
+                <span className="triangle"/>
               </div>
               <img className="go" src={this.img_go} alt=""/>
             </div>
           </div>
-
           {popDom}
         </div>
     )

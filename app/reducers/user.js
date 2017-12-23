@@ -4,8 +4,10 @@ export const initialState = {
   isFetching: false,
   received:false,
   check:false,
-  phone:'',
-  id:''
+  phone:'15921433951',/**需要删除**/
+  id:'2',/**需要删除**/
+  pirze:'',
+  err_msg:''
 }
 
 export default function disk(state = initialState, action) {
@@ -13,7 +15,8 @@ export default function disk(state = initialState, action) {
     case actionTypes.USERCHECK_REQUEST_POST:
       return {
         ...state,
-        isFetching: true
+        isFetching: true,
+        err_msg:''
       }
     case actionTypes.USERCHECK_RECEIVED:
       return {
@@ -22,12 +25,14 @@ export default function disk(state = initialState, action) {
         received:true,
         check: action.check,
         phone: action.phone,
-        id:action.id
+        id:action.id,
+        err_msg:''
       }
     case actionTypes.USERCHECK_ERROR: //如果请求发生意外，则按此处理
       return {
         ...state,
         isFetching: false,
+        err_msg:action.err_msg
       }
     default:
       return state

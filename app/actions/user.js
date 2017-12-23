@@ -12,8 +12,9 @@ const received = (check,phone,id) =>({
   id
 })
 
-const receivedError = () =>({
-  type: actionTypes.USERCHECK_ERROR
+export const receivedError = (err_msg) =>({
+  type: actionTypes.USERCHECK_ERROR,
+  err_msg
 })
 
 const fetchPosts = phone => dispatch => {
@@ -27,13 +28,11 @@ const fetchPosts = phone => dispatch => {
           dispatch(received(true,phone,json.data[0].id))
         }
         else{
-          alert(json.msg)
-          dispatch(received(false,phone,''))
+          dispatch(receivedError(json.msg))
         }
       })
       .catch(err=>{
-        alert('网络连接错误，请稍后再试')
-        dispatch(receivedError())
+        dispatch(receivedError('网络连接错误，请稍后再试'))
       })
 }
 
