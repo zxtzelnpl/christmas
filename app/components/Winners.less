@@ -8,37 +8,10 @@
 }
 @keyframes scrollTextH {
     0%{
-        transform: translateY(0);
-    }
-    10%{
-        transform: translateY(10%);
-    }
-    20%{
-        transform: translateY(10%);
-    }
-    30%{
-        transform: translateY(20%);
-    }
-    40%{
-        transform: translateY(20%);
-    }
-    50%{
-        transform: translateY(30%);
-    }
-    60%{
-        transform: translateY(30%);
-    }
-    70%{
-        transform: translateY(40%);
-    }
-    80%{
-        transform: translateY(40%);
-    }
-    90%{
-        transform: translateY(50%);
+        transform: translateX(0);
     }
     100%{
-        transform: translateY(50%);
+        transform: translateX(-50%);
     }
 }
 .Winners{
@@ -95,6 +68,7 @@
     position:absolute;
     top:1.2rem;
     left:50%;
+    z-index: 1;
     margin-left:-2rem;
     width:4rem;
     height:.8rem;
@@ -110,8 +84,8 @@
     justify-content: space-between;
 
     margin:0 auto;
-    padding:0 .3rem;
-    width:5.8rem;
+    padding:0 .2rem;
+    width:6rem;
     height:.65rem;
     border:.1rem solid #ffa676;
     border-radius:10px;
@@ -124,14 +98,27 @@
 
     .list_wrap{
         width:5.3rem;
+        height:.65rem;
         overflow: hidden;
         ul{
+            display:flex;
+            align-items: center;
+            width:200%;
         }
         li{
             display:flex;
             align-items: center;
             justify-content: space-between;
             height:.65rem;
+            width:50%;
+        }
+        span{
+            padding:0 .05rem;
+            color:black;
+            font-weight:bold;
+            &:nth-child(3){
+                color:red;
+            }
         }
     }
 }
@@ -142,15 +129,29 @@
     width:6.4rem;
     border:.1rem solid #ffa676;
     border-radius:10px;
-    ul{
-        li{
-            height:.6rem;
-        }
-        li:nth-of-type(odd){
-            background:#f9f9d8;
-        }
-        li:nth-of-type(even){
-            background:#f3eec3;
+    .list_wrap{
+        height:3.6rem;
+        overflow: hidden;
+    }
+    li{
+        height:.6rem;
+        display:flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-size:.28rem;
+    }
+    li:nth-of-type(odd){
+        background:#f9f9d8;
+    }
+    li:nth-of-type(even){
+        background:#f3eec3;
+    }
+    span{
+        padding-left:.5rem;
+        color:black;
+        &:nth-child(3){
+            color:red;
+            font-weight:bold;
         }
     }
 }
