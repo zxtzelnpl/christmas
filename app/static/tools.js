@@ -22,5 +22,5 @@ export function getPrize(){
   let prizes=['888元加油卡','IphoneX一台','加增服务期30天','跨年金股一只','加增服务期45天','1000元京东购物卡','加增服务期15天']
   let len = prizes.length
   let index = Math.floor(Math.random()*len)
-  return prizes[index]
+  return prizes[5]
 }
