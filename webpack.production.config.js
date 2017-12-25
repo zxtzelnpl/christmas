@@ -19,8 +19,8 @@ module.exports = {
   output: {
     path: __dirname + '/christmas',
     // path: __dirname + '/build',
-    // filename: "[name].[chunkhash:8].js",
-    filename:'[name].js',
+    filename: "[name].[chunkhash:8].js",
+    // filename:'[name].js',
     publicPath: '/christmas/'
   },
   resolve: {
@@ -77,7 +77,7 @@ module.exports = {
     new webpack.DefinePlugin({'process.env': {'NODE_ENV': JSON.stringify(process.env.NODE_ENV)}}),
 
     // 为组件分配ID，通过这个插件webpack可以分析和优先考虑使用最多的模块，并为它们分配最小的ID
-    // new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
 
 
     new webpack.optimize.UglifyJsPlugin({
