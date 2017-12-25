@@ -19,7 +19,6 @@
 	    <div id="root">
 	    
 	    </div>
-	        
 		<script type="text/javascript" src="/christmas/vendor.js"></script><script type="text/javascript" src="/christmas/index.2b5f2215.js"></script>
 	    <script type="text/javascript">
 	        wx.config({
