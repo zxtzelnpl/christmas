@@ -15,6 +15,7 @@ export default class Prize extends React.Component{
         <p>恭喜</p>
         <p>您获得奖品</p>
         <p>“{this.props.prize}”</p>
+        <p>系统会在原有产品服务期限再增加{this.props.prize.slice(-3)}</p>
         <img className="left" src={this.img_boolean_left} alt=""/>
         <img className="right" src={this.img_boolean_right} alt=""/>
       </div>

@@ -22,6 +22,7 @@ export default class TurnTable extends React.Component {
       deg:0,
       prize:''
     }
+    // this.userGot=userPrize()/**需要删除，改为上面的注释**/
   }
 
   componentDidMount() {
