@@ -30,9 +30,6 @@ export function userPrize(){
     prize:'加增服务期30天',
     deg:60
   },{
-    prize:'加增服务期45天',
-    deg:160
-  },{
     prize:'加增服务期15天',
     deg:260
   }]
